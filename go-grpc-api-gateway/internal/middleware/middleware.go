@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -38,6 +39,7 @@ func (c *AuthMiddlewareConfig) AuthRequired(ctx *gin.Context) {
 
 	if err != nil || res.Status != http.StatusOK {
 		ctx.AbortWithStatus(http.StatusUnauthorized)
+		fmt.Println("Unauthorized")
 		return
 	}
 
